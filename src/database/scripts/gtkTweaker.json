@@ -1,0 +1,5 @@
+{
+  "apt": [
+    "sudo apt install -y gnome-tweak-tool chrome-gnome-shell"
+  ]
+}

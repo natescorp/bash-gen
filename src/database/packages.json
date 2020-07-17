@@ -1,0 +1,49 @@
+[{
+    "id": 100,
+    "name": "Docker",
+    "codeName": "docker",
+    "status": true
+  },
+  {
+    "id": 101,
+    "name": "FlameShot",
+    "codeName": "flameshot",
+    "status": true
+  },
+  {
+    "id": 102,
+    "name": "GIT",
+    "codeName": "git",
+    "status": true
+  },
+  {
+    "id": 103,
+    "name": "Gnome Tweaker",
+    "codeName": "gtkTweaker",
+    "status": true
+  },
+  {
+    "id": 104,
+    "name": "Google Chrome",
+    "codeName": "chrome",
+    "status": true
+  },
+  {
+    "id": 105,
+    "name": "Node.js",
+    "codeName": "nodejs",
+    "status": true
+  },
+  {
+    "id": 106,
+    "name": "Visual Studio Code",
+    "codeName": "vscode",
+    "status": true
+  },
+  {
+    "id": 107,
+    "name": "Yarn",
+    "codeName": "yarn",
+    "status": true
+  }
+]

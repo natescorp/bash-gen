@@ -1,0 +1,8 @@
+[
+  {"id":0, "name": "apt", "codeName": "apt", "status": true},
+  {"id":1, "name": "yum", "codeName": "yum", "status": true},
+  {"id":2, "name": "dnf", "codeName": "dnf", "status": false},
+  {"id":3, "name": "pkg", "codeName": "pkg", "status": false},
+  {"id":4, "name": "Snapcraft", "codeName": "snap", "status": false},
+  {"id":5, "name": "Flatpack", "codeName": "flat", "status": false}
+]

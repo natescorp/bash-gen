@@ -1,0 +1,10 @@
+{
+  "should": [
+    "nodejs",
+    "vscode",
+    "yarn"
+  ],
+  "apt": [
+    "sudo apt install -y curl"
+  ]
+}
