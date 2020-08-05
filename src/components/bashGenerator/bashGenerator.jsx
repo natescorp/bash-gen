@@ -4,13 +4,9 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
-const PackageManager = React.lazy(() =>
-  import("./steps/packageManager/packageManager")
-);
-const InstallPackages = React.lazy(() =>
-  import("./steps/installPackages/installPackages")
-);
-const GetScript = React.lazy(() => import("./steps/getScript/getScript"));
+import PackageManager from "./steps/packageManager/packageManager";
+import InstallPackages from "./steps/installPackages/installPackages";
+import GetScript from "./steps/getScript/getScript";
 
 const useStyles = makeStyles({
   bashGenerator: {
