@@ -6,6 +6,17 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import Cookies from 'cookies-js';
+
+const COOKIE_APPLICATION_X_AUTH_TOKEN = 'testJS';
+
+const getCookie = product => Cookies.get(`${COOKIE_APPLICATION_X_AUTH_TOKEN}_${product}`);
+
+const setCookie = (xAuthToken, product) =>
+  Cookies.set(`${COOKIE_APPLICATION_X_AUTH_TOKEN}_${product}`, xAuthToken);
+
+  const setCookieWithProps = (xAuthToken, product, props) =>
+    Cookies.set(`${COOKIE_APPLICATION_X_AUTH_TOKEN}_${product}`, xAuthToken, props);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +39,35 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
   const classes = useStyles();
 
+  const onClickHandler = (e) => {
+    e.preventDefault();
+
+    localStorage.setItem('test', 'pisos');
+    console.log('localStorage', localStorage);
+
+    sessionStorage.setItem('test', 'pisos');
+    console.log('sessionStorage', sessionStorage);
+
+    document.cookie = 'test_path_simple=pisos;path=/';
+    document.cookie = 'test_path_lax=pisosLax;samesite=lax;path=/';
+    document.cookie = 'test_path_secure=pisosSecure;secure;path=/';
+    document.cookie = 'test_path_noneSecure=pisosNoneSecure;samesite=none;secure;path=/';
+    document.cookie = 'test_simple=pisos';
+    document.cookie = 'test_lax=pisosLax;samesite=lax';
+    document.cookie = 'test_secure=pisosSecure;secure';
+    document.cookie = 'test_noneSecure=pisosNoneSecure;samesite=none;secure';
+    console.log('Cookies', document.cookie);
+
+    setCookie('pisos', 'simple');
+    setCookieWithProps('pisosEmpty', 'empty', {});
+    setCookieWithProps('pisosLax', 'lax', { samesite: 'lax' });
+    setCookieWithProps('pisosSecure', 'secure', { secure: true });
+    console.log('Cookies-js simple', getCookie('simple'));
+    console.log('Cookies-js empty', getCookie('empty'));
+    console.log('Cookies-js lax', getCookie('lax'));
+    console.log('Cookies-js secure', getCookie('secure'));
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -44,6 +84,9 @@ export default function Header() {
           </a>
           <a href="/" className={classes.title}>
             <Typography variant="h6">Home</Typography>
+          </a>
+          <a href="/#" className={classes.link} onClick={onClickHandler}>
+            <Button color="inherit">Set test Cookies</Button>
           </a>
           <a href="/bash" className={classes.link}>
             <Button color="inherit">Bash Gen</Button>

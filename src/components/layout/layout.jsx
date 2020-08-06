@@ -6,6 +6,9 @@ import Header from "./../../components/layout/header/header";
 
 const useStyles = makeStyles({
   root: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: '300',
     padding: '3vmin',
   }
 });
@@ -16,7 +19,7 @@ function Layout(props) {
   return(
     <>
       <Header/>
-      <CssBaseline />
+      <CssBaseline/>
       <Container maxWidth="lg" component="main" className={classes.root}>
           {props.children}
       </Container>

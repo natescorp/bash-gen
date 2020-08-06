@@ -10,13 +10,16 @@ import GetScript from "./../../components/bashGenerator/steps/getScript/getScrip
 
 const useStyles = makeStyles({
   bashGenerator: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     background: "linear-gradient(45deg, #3f51b5, #cf53ff)",
     color: "white",
     padding: "3vmin",
     border: 0,
     borderRadius: "2vmin",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-    minHeight: "calc(100vh - 64px)",
+    height: '100%',
   },
   title: {
     fontSize: "1rem",
@@ -100,12 +103,14 @@ function BashGenerator({ data }) {
   }
 
   return (
-    <div className={classes.bashGenerator}>
-      <Typography variant="h2" gutterBottom className={classes.title}>
-        Step {step + 1} of {steps.length}
-      </Typography>
-      <BorderLinearProgress variant="determinate" value={progressValue} />
-      <>{steps[step]}</>
+    <section className={classes.bashGenerator}>
+      <div>
+        <Typography variant="h2" gutterBottom className={classes.title}>
+          Step {step + 1} of {steps.length}
+        </Typography>
+        <BorderLinearProgress variant="determinate" value={progressValue} />
+        <>{steps[step]}</>
+      </div>
       <div className={classes.footer}>
         {!isFirstStep && (
           <Button
@@ -130,7 +135,7 @@ function BashGenerator({ data }) {
           </Button>
         )}
       </div>
-    </div>
+    </section>
   );
 }
 
