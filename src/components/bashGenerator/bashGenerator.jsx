@@ -4,9 +4,9 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
-import PackageManager from "components/bashGenerator/steps/packageManager/packageManager";
-import InstallPackages from "components/bashGenerator/steps/installPackages/installPackages";
-import GetScript from "components/bashGenerator/steps/getScript/getScript";
+import PackageManager from "./../../components/bashGenerator/steps/packageManager/packageManager";
+import InstallPackages from "./../../components/bashGenerator/steps/installPackages/installPackages";
+import GetScript from "./../../components/bashGenerator/steps/getScript/getScript";
 
 const useStyles = makeStyles({
   bashGenerator: {

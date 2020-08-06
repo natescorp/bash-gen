@@ -6,8 +6,8 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { Alert, AlertTitle } from "@material-ui/lab";
-import packages from "database/packages.json";
-import * as scripts from "database/scripts";
+import packages from "./../../../../database/packages.json";
+import * as scripts from "./../../../../database/scripts";
 
 const useStyles = makeStyles({
   conteiner: {

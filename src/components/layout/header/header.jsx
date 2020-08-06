@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -33,7 +32,7 @@ export default function Header() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Link to="/" className={classes.link}>
+          <a href="/" className={classes.link}>
             <IconButton
               edge="start"
               className={classes.menuButton}
@@ -42,13 +41,13 @@ export default function Header() {
             >
               <MenuIcon />
             </IconButton>
-          </Link>
-          <Link to="/" className={classes.title}>
+          </a>
+          <a href="/" className={classes.title}>
             <Typography variant="h6">Home</Typography>
-          </Link>
-          <Link to="/bash" className={classes.link}>
+          </a>
+          <a href="/bash" className={classes.link}>
             <Button color="inherit">Bash Gen</Button>
-          </Link>
+          </a>
         </Toolbar>
       </AppBar>
     </div>
