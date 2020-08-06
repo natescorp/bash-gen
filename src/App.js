@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 
-import './App.css';
-import Layout from "./components/layout/layout";
-import BashGenerator from "./components/bashGenerator/bashGenerator";
+import 'App.css';
+import Layout from "components/layout/layout";
+import BashGenerator from "components/bashGenerator/bashGenerator";
 
 function App() {
   const myRef = useRef();
