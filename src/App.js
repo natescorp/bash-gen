@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, Suspense  } from 'react';
 
 import './App.css';
-import Layout from "./components/layout/layout";
-import BashGenerator from "./components/bashGenerator/bashGenerator";
+const Layout = React.lazy(() => import('./components/layout/layout'));
+const BashGenerator = React.lazy(() => import('./components/bashGenerator/bashGenerator'));
 
 function App() {
   const myRef = useRef();
@@ -14,9 +14,13 @@ function App() {
 
   return (
     <div className="App" ref={myRef}>
+    <Suspense fallback={<h1>Loading data...</h1>}>
       <Layout>
-        <BashGenerator />
+        <Suspense fallback={<h1>Loading data...</h1>}>
+          <BashGenerator />
+        </Suspense>
       </Layout>
+    </Suspense>
     </div>
   );
 }
