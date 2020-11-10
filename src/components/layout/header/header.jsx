@@ -6,17 +6,17 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import Cookies from 'cookies-js';
+import * as TinyCookies from 'tiny-cookie';
 
 const COOKIE_APPLICATION_X_AUTH_TOKEN = 'testJS';
 
-const getCookie = product => Cookies.get(`${COOKIE_APPLICATION_X_AUTH_TOKEN}_${product}`);
+const getTinyCookie = product => TinyCookies.get(`${COOKIE_APPLICATION_X_AUTH_TOKEN}_${product}`);
 
-const setCookie = (xAuthToken, product) =>
-  Cookies.set(`${COOKIE_APPLICATION_X_AUTH_TOKEN}_${product}`, xAuthToken);
+const setTinyCookie = (xAuthToken, product) =>
+    TinyCookies.set(`${COOKIE_APPLICATION_X_AUTH_TOKEN}_${product}`, xAuthToken);
 
-  const setCookieWithProps = (xAuthToken, product, props) =>
-    Cookies.set(`${COOKIE_APPLICATION_X_AUTH_TOKEN}_${product}`, xAuthToken, props);
+const setTinyCookieWithProps = (xAuthToken, product, props) =>
+    TinyCookies.set(`${COOKIE_APPLICATION_X_AUTH_TOKEN}_${product}`, xAuthToken, props);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,23 +49,18 @@ export default function Header() {
     console.log('sessionStorage', sessionStorage);
 
     document.cookie = 'test_path_simple=pisos;path=/';
-    document.cookie = 'test_path_lax=pisosLax;samesite=lax;path=/';
     document.cookie = 'test_path_secure=pisosSecure;secure;path=/';
     document.cookie = 'test_path_noneSecure=pisosNoneSecure;samesite=none;secure;path=/';
+
     document.cookie = 'test_simple=pisos';
-    document.cookie = 'test_lax=pisosLax;samesite=lax';
     document.cookie = 'test_secure=pisosSecure;secure';
     document.cookie = 'test_noneSecure=pisosNoneSecure;samesite=none;secure';
     console.log('Cookies', document.cookie);
 
-    setCookie('pisos', 'simple');
-    setCookieWithProps('pisosEmpty', 'empty', {});
-    setCookieWithProps('pisosLax', 'lax', { samesite: 'lax' });
-    setCookieWithProps('pisosSecure', 'secure', { secure: true });
-    console.log('Cookies-js simple', getCookie('simple'));
-    console.log('Cookies-js empty', getCookie('empty'));
-    console.log('Cookies-js lax', getCookie('lax'));
-    console.log('Cookies-js secure', getCookie('secure'));
+    setTinyCookie('pisosTiny', 'simpleTiny');
+    setTinyCookieWithProps('pisosSecureTiny', 'secureTiny', { sameSite: 'none', secure: true });
+    console.log('Tiny-Cookie simple', getTinyCookie('simpleTiny'));
+    console.log('Tiny-Cookie secure', getTinyCookie('secureTiny'));
   }
 
   return (
