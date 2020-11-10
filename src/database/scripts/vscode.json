@@ -6,5 +6,8 @@
     "sudo apt install -y apt-transport-https",
     "sudo apt update",
     "sudo apt install -y code"
+  ],
+  "snap": [
+    "sudo snap install code --classic"
   ]
 }

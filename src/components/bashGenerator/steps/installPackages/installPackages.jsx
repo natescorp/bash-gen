@@ -52,7 +52,7 @@ function InstallPackages({
     if (selectedPackages.includes(event.target.value)) {
       let tempArr = selectedPackages;
       tempArr.splice(selectedPackages.indexOf(event.target.value), 1);
-      setSelectedPackages(tempArr);
+      setSelectedPackages([...tempArr]);
     } else {
       setSelectedPackages([...selectedPackages, event.target.value]);
     }

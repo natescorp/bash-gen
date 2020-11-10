@@ -6,5 +6,8 @@
   ],
   "apt": [
     "sudo apt install -y curl"
+  ],
+  "snap": [
+    ""
   ]
 }

@@ -1,5 +1,8 @@
 {
   "apt": [
     "sudo apt install -y flameshot"
+  ],
+  "snap": [
+    ""
   ]
 }

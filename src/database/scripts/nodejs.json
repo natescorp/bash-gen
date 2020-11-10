@@ -4,5 +4,8 @@
     "sudo apt update",
     "sudo apt install -y nodejs",
     "sudo apt install -y gcc g++ make"
+  ],
+  "snap": [
+    "sudo snap install node --channel=15/stable --classic"
   ]
 }
