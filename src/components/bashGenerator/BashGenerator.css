@@ -1,0 +1,135 @@
+.bash-generator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--main-blue-color);
+  border: .25rem solid var(--main-cyan-color);
+  padding: 3vmin;
+  height: 100%;
+}
+
+.bash-generator__title {
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.bash-generator__content {
+  background-color: var(--main-dark-gray-color);
+  padding: 3vmin;
+}
+
+.bash-generator__footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  grid-gap: 2rem;
+  grid-auto-flow: dense;
+  margin: 1rem 0;
+}
+
+.bash-generator__footer-button {
+  background-color: var(--main-cyan-color);
+  color: var(--main-white-color);
+  border: 0;
+  font-family: "Web437_IBM_VGA";
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+.bash-generator__footer-button:hover {
+  background-color: var(--main-light-cyan-color);
+  color: var(--main-black-color);
+}
+
+.bash-generator__palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  color: var(--main-white-color);
+}
+
+.bash-generator__palette > div {
+  height: 2rem;
+  width: 15rem;
+  font-size: 1.5rem;
+}
+
+.bash-generator__palette--black {
+  background-color: var(--main-black-color);
+}
+
+.bash-generator__palette--blue {
+  background-color: var(--main-blue-color);
+}
+
+.bash-generator__palette--green {
+  background-color: var(--main-green-color);
+}
+
+.bash-generator__palette--cyan {
+  background-color: var(--main-cyan-color);
+}
+
+.bash-generator__palette--red {
+  background-color: var(--main-red-color);
+}
+
+.bash-generator__palette--magenta {
+  background-color: var(--main-magenta-color);
+}
+
+.bash-generator__palette--brown {
+  background-color: var(--main-brown-color);
+}
+
+.bash-generator__palette--light-gray {
+  background-color: var(--main-light-gray-color);
+  color: var(--main-black-color);
+}
+
+.bash-generator__palette--dark-gray {
+  background-color: var(--main-dark-gray-color);
+}
+
+.bash-generator__palette--light-blue {
+  background-color: var(--main-light-blue-color);
+  color: var(--main-black-color);
+}
+
+.bash-generator__palette--light-green {
+  background-color: var(--main-light-green-color);
+  color: var(--main-black-color);
+}
+
+.bash-generator__palette--light-cyan {
+  background-color: var(--main-light-cyan-color);
+  color: var(--main-black-color);
+}
+
+.bash-generator__palette--light-red {
+  background-color: var(--main-light-red-color);
+  color: var(--main-black-color);
+}
+
+.bash-generator__palette--light-magenta {
+  background-color: var(--main-light-magenta-color);
+  color: var(--main-black-color);
+}
+
+.bash-generator__palette--yellow {
+  background-color: var(--main-yellow-color);
+  color: var(--main-black-color);
+}
+
+.bash-generator__palette--white {
+  background-color: var(--main-white-color);
+  color: var(--main-black-color);
+}
+
+@media (orientation: portrait) {
+  .bash-generator,
+  .bash-generator__content {
+    padding: 3vmax;
+  }
+}

@@ -1,14 +1,49 @@
+html {
+  --main-black-color: #000000;
+  --main-blue-color: #0000AA;
+  --main-green-color: #00AA00;
+  --main-cyan-color: #00AAAA;
+  --main-red-color: #AA0000;
+  --main-magenta-color: #AA00AA;
+  --main-brown-color: #AAAA00;
+  --main-light-gray-color: #AAAAAA;
+  --main-dark-gray-color: #555555;
+  --main-light-blue-color: #5555FF;
+  --main-light-green-color: #55FF55;
+  --main-light-cyan-color: #55FFFF;
+  --main-light-red-color: #FF5555;
+  --main-light-magenta-color: #FF55FF;
+  --main-yellow-color: #FFFF55;
+  --main-white-color: #FFFFFF;
+
+  font-family: 'Web437_IBM_VGA';
+  color: var(--main-white-color);
+  background-color: var(--main-black-color);
+  font-size: calc( (100vmax - 480px)/(1280 - 480) * (24 - 16) + 16px);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #000000;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: "Web437_IBM_VGA";
+  background-color: var(--main-red-color);
+}
+
+code::before {
+  content: "| "
+}
+
+code::after {
+  content: " |"
+}
+
+@font-face {
+  font-family: "Web437_IBM_VGA";
+  src: url("../public/WebPlus_IBM_VGA_9x16.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
 }

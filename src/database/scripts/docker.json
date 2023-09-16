@@ -9,6 +9,6 @@
     "sudo yum install -y docker"
   ],
   "snap": [
-    ""
+    "sudo snap install docker"
   ]
 }

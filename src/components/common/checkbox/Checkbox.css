@@ -1,0 +1,23 @@
+.checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-black-color);
+  background-color: var(--main-cyan-color);
+  padding: .25em 1em;
+  box-sizing: border-box;
+}
+
+.checkbox--checked {
+  color: var(--main-yellow-color);
+  background-color: var(--main-blue-color);
+}
+
+.checkbox--disabled {
+  color: var(--main-dark-gray-color);
+  background-color: var(--main-light-gray-color);
+}
+
+label.checkbox > input[type='checkbox'] {
+  display: none;
+}

@@ -1,55 +1,18 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import './Header.css';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-    color: "inherit",
-    textDecoration: "none",
-  },
-  link: {
-    color: "inherit",
-    textDecoration: "none",
-  },
-}));
+const Header = () => (
+  <div className="header">
+    <a href="/" className="header__menu-button">
+      MenuIcon
+    </a>
+    <a href="/" className="header__title">
+      Home
+    </a>
+    <a href="/bash" className="header__link">
+      Bash Gen
+    </a>
+  </div>
+);
 
-export default function Header() {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <a href="/" className={classes.link}>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-            >
-              <MenuIcon />
-            </IconButton>
-          </a>
-          <a href="/" className={classes.title}>
-            <Typography variant="h6">Home</Typography>
-          </a>
-          <a href="/bash" className={classes.link}>
-            <Button color="inherit">Bash Gen</Button>
-          </a>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-}
+export default Header;

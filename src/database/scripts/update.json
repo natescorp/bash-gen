@@ -2,6 +2,9 @@
   "apt": [
     "sudo apt update"
   ],
+  "dnf": [
+    "sudo dnf check-update"
+  ],
   "yum": [
     "sudo yum check-update"
   ],

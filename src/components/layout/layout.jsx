@@ -1,30 +1,19 @@
 import React from "react";
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
-import Header from "./../../components/layout/header/header";
+import PropTypes from 'prop-types';
+import Header from "./header/Header";
+import './Layout.css';
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    flexGrow: '300',
-    padding: '3vmin',
-  }
-});
+const Layout = ({ children }) => (
+  <>
+    <Header/>
+    <div className="layout">
+      { children }
+    </div>
+  </>
+);
 
-function Layout(props) {
-  const classes = useStyles();
-
-  return(
-    <>
-      <Header/>
-      <CssBaseline/>
-      <Container maxWidth="lg" component="main" className={classes.root}>
-          {props.children}
-      </Container>
-    </>
-  );
-}
+Layout.propTypes = {
+  children: PropTypes.node,
+};
 
 export default Layout;

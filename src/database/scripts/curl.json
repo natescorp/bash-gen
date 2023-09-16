@@ -7,7 +7,16 @@
   "apt": [
     "sudo apt install -y curl"
   ],
-  "snap": [
+  "dnf": [
     ""
+  ],
+  "yum": [
+    ""
+  ],
+  "flat": [
+    ""
+  ],
+  "snap": [
+    "sudo snap install curl"
   ]
 }

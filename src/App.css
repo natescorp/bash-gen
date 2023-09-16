@@ -1,5 +1,7 @@
 .App {
-    display: flex;
-    flex-direction: column;
-    background-color: #000000;
+  background-color: var(--main-black-color);
+  max-width: 100dvw;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
 }

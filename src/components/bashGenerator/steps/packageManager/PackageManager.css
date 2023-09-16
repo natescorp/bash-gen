@@ -1,0 +1,41 @@
+.package-manager {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.package-manager__title {
+  font-size: 1.3rem;
+  font-weight: normal;
+  line-height: 1.2;
+  text-align: center;
+  margin-top: 3vmin;
+  margin-bottom: 3vmin;
+}
+
+.package-manager__label {
+  margin: 0;
+  line-height: 2;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.package-manager__label:hover {
+  background-color: var(--main-yellow-color);
+  color: var(--main-black-color);
+}
+
+.package-manager__form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  grid-gap: 1.5rem;
+  grid-auto-flow: dense;
+}
+
+@media (orientation: portrait) {
+  .package-manager__title {
+    margin-top: 3vmax;
+    margin-bottom: 3vmax;
+  }
+}

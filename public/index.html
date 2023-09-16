@@ -1,15 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <!-- Must -->
+    <meta charset="utf-8">
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="theme-color" content="#00aaaa" />
+    <meta name="description" content="Bash-script Generator">
+    <meta name="keywords" content="Keywords">
+    <title>Page Title</title>
+
+    <!-- Android  -->
+    <meta name="theme-color" content="#00aaaa">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- iOS -->
+    <meta name="apple-mobile-web-app-title" content="Application Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Windows  -->
+    <meta name="msapplication-navbutton-color" content="#00aaaa">
+    <meta name="msapplication-TileColor" content="#00aaaa">
+    <meta name="msapplication-TileImage" content="%PUBLIC_URL%/icon-192x192.png">
+<!--    <meta name="msapplication-config" content="browserconfig.xml">-->
+
+    <!-- Pinned Sites  -->
+    <meta name="application-name" content="Bash Generator">
+    <meta name="msapplication-tooltip" content="Bash-script Generator:Tooltip Text">
+    <meta name="msapplication-starturl" content="/">
+
+    <!-- Tap highlighting  -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- UC Mobile Browser  -->
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+
+    <!-- Disable night mode for this page  -->
+    <meta name="nightmode" content="enable/disable">
+
+    <!-- Fitscreen  -->
+    <meta name="viewport" content="uc-fitscreen=yes"/>
+
+    <!-- Layout mode -->
+    <meta name="layoutmode" content="fitscreen/standard">
+
+    <!-- imagemode - show image even in text only mode  -->
+    <meta name="imagemode" content="force">
+
+    <!-- Orientation  -->
+    <meta name="screen-orientation" content="portrait">
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/icon-192x192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -25,6 +69,17 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+
+    <script>
+      console.log('read');
+      if ('serviceWorker' in navigator) {
+        console.log('serviceWorker exist');
+        window.addEventListener('load', function() {
+          console.log('serviceWorker registered');
+          navigator.serviceWorker.register('%PUBLIC_URL%/generate-sw.js');
+        });
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -39,6 +94,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script type="text/javascript" src="%PUBLIC_URL%/iframeResizer.contentWindow.min.js"></script>
   </body>
 </html>

@@ -20,7 +20,7 @@
     "id": 103,
     "name": "Gnome Tweaker",
     "codeName": "gtkTweaker",
-    "status": true
+    "status": false
   },
   {
     "id": 104,

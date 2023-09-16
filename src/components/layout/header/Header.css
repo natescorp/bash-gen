@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  padding: .75rem 1rem;
+  background-color: var(--main-blue-color);
+  border-bottom: .25rem solid var(--main-cyan-color);
+}
+
+.header__menu-button,
+.header__title,
+.header__link {
+  color: var(--main-yellow-color);
+  font-size: 1.5rem;
+  font-weight: normal;
+  line-height: 1.2;
+  text-decoration: none;
+  margin: 0 .75rem;
+}
+
+.header__menu-button {
+  flex-grow: 1;
+  text-decoration: none;
+}
+
+.header__title {
+  text-decoration: none;
+}
+
+.header__link {
+  text-decoration: none;
+}

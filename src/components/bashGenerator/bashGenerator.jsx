@@ -1,60 +1,23 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import React, {useState, useEffect, useMemo, useCallback} from "react";
+import './BashGenerator.css';
 
-import PackageManager from "./../../components/bashGenerator/steps/packageManager/packageManager";
-import InstallPackages from "./../../components/bashGenerator/steps/installPackages/installPackages";
-import GetScript from "./../../components/bashGenerator/steps/getScript/getScript";
-
-const useStyles = makeStyles({
-  bashGenerator: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    background: "linear-gradient(45deg, #3f51b5, #cf53ff)",
-    color: "white",
-    padding: "3vmin",
-    border: 0,
-    borderRadius: "2vmin",
-    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-    height: '100%',
-  },
-  title: {
-    fontSize: "1rem",
-  },
-  footer: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-    gridGap: 32,
-    gridAutoFlow: "dense",
-    marginTop: "1rem",
-  },
-});
-const BorderLinearProgress = withStyles((theme) => ({
-  root: {
-    margin: "1vmin 0 2vmin",
-    height: 10,
-    borderRadius: 5,
-  },
-  colorPrimary: {
-    backgroundColor:
-      theme.palette.grey[theme.palette.type === "light" ? 200 : 700],
-  },
-  bar: {
-    borderRadius: 5,
-    backgroundColor: "#cf53ff",
-  },
-}))(LinearProgress);
+import PackageManager from "./steps/packageManager/PackageManager";
+import InstallPackages from "./steps/installPackages/InstallPackages";
+import GetScript from "./steps/getScript/GetScript";
 
 const bashGenParam = "bashGen";
 
-function BashGenerator({ data }) {
-  const classes = useStyles();
+const BashGenerator = () => {
+  const [isVisiblePalette, setIsVisiblePalette] = useState(false);
   const [step, setStep] = useState(0);
   const [selectedManager, setSelectedManager] = useState("apt");
   const [selectedPackages, setSelectedPackages] = useState([]);
+
+  useEffect(() => {
+    if (document.location.hostname === 'localhost') {
+      setIsVisiblePalette(!isVisiblePalette);
+    }
+  }, [])
 
   useEffect(() => {
     if (sessionStorage.getItem(bashGenParam)) {
@@ -76,15 +39,14 @@ function BashGenerator({ data }) {
     );
   }, [step, selectedManager, selectedPackages]);
 
-  const progressValue = (100 / 2) * step;
-
-  const steps = [
-    <PackageManager data={{ selectedManager, setSelectedManager }} />,
+  const steps = useMemo(() => [
+    <PackageManager key='package-manager' data={{ selectedManager, setSelectedManager }} />,
     <InstallPackages
-      data={{ selectedManager, selectedPackages, setSelectedPackages }}
+      key='install-packages'
+      data={{ selectedPackages, setSelectedPackages }}
     />,
-    <GetScript data={{ selectedManager, selectedPackages }} />,
-  ];
+    <GetScript key='get-script' data={{ selectedManager, selectedPackages }} />,
+  ], [selectedManager, selectedPackages, setSelectedManager, setSelectedPackages]);
 
   const isFirstStep = useMemo(() => step === 0, [step]);
   const isLastStep = useMemo(() => step === steps.length - 1, [
@@ -92,51 +54,63 @@ function BashGenerator({ data }) {
     steps.length,
   ]);
 
-  function prevStepHandler(event) {
+  const prevStepHandler = useCallback(event => {
     event.preventDefault();
     setStep(step === 0 ? 0 : step - 1);
-  }
+  }, [step, setStep]);
 
-  function nextStepHandler(event) {
+  const nextStepHandler = useCallback(event => {
     event.preventDefault();
     setStep(step === 2 ? 2 : step + 1);
-  }
+  }, [step, setStep]);
 
   return (
-    <section className={classes.bashGenerator}>
-      <div>
-        <Typography variant="h2" gutterBottom className={classes.title}>
-          Step {step + 1} of {steps.length}
-        </Typography>
-        <BorderLinearProgress variant="determinate" value={progressValue} />
-        <>{steps[step]}</>
-      </div>
-      <div className={classes.footer}>
+    <section className="bash-generator">
+      <h2 className="bash-generator__title">
+        Step {step + 1} of {steps.length}
+      </h2>
+      <div className="bash-generator__content">{steps[step]}</div>
+      <div className="bash-generator__footer">
         {!isFirstStep && (
-          <Button
-            variant="contained"
-            color="primary"
+          <button
+            className="bash-generator__footer-button"
             type="button"
             value="prev"
             onClick={prevStepHandler}
           >
             Prev
-          </Button>
+          </button>
         )}
         {!isLastStep && (
-          <Button
-            variant="contained"
-            color="primary"
+          <button
+            className="bash-generator__footer-button"
             type="button"
             value="next"
             onClick={nextStepHandler}
           >
             Next
-          </Button>
+          </button>
         )}
       </div>
+      {isVisiblePalette && <div className="bash-generator__palette">
+        <div className="bash-generator__palette--black">black</div>
+        <div className="bash-generator__palette--blue">blue</div>
+        <div className="bash-generator__palette--green">green</div>
+        <div className="bash-generator__palette--cyan">cyan</div>
+        <div className="bash-generator__palette--red">red</div>
+        <div className="bash-generator__palette--magenta">magenta</div>
+        <div className="bash-generator__palette--brown">brown</div>
+        <div className="bash-generator__palette--light-gray">light-gray</div>
+        <div className="bash-generator__palette--dark-gray">dark-gray</div>
+        <div className="bash-generator__palette--light-blue">light-blue</div>
+        <div className="bash-generator__palette--light-green">light-green</div>
+        <div className="bash-generator__palette--light-cyan">light-cyan</div>
+        <div className="bash-generator__palette--light-red">light-red</div>
+        <div className="bash-generator__palette--light-magenta">light-magenta</div>
+        <div className="bash-generator__palette--yellow">yellow</div>
+        <div className="bash-generator__palette--white">white</div>
+      </div>}
     </section>
   );
 }
-
 export default BashGenerator;

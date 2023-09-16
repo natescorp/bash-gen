@@ -1,0 +1,12 @@
+.layout {
+  background-color: var(--main-dark-gray-color);
+  display: flex;
+  flex-direction: column;
+  padding: 3vmin;
+}
+
+@media (orientation: portrait) {
+  .layout {
+    padding: 3vmax;
+  }
+}

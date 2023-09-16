@@ -2,7 +2,13 @@
   "apt": [
     "sudo apt install -y flameshot"
   ],
+  "yum": [
+    "sudo dnf install flameshot"
+  ],
+  "flat": [
+    "flatpak install flathub org.flameshot.Flameshot"
+  ],
   "snap": [
-    ""
+    "sudo snap install flameshot"
   ]
 }

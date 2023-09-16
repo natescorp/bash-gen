@@ -1,88 +1,80 @@
-import React, { useMemo } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Chip from "@material-ui/core/Chip";
-import DoneIcon from "@material-ui/icons/Done";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import { Alert, AlertTitle } from "@material-ui/lab";
+import React, {useCallback, useMemo, useState} from "react";
+import PropTypes from 'prop-types';
+import './GetScript.css';
 import packages from "./../../../../database/packages.json";
 import * as scripts from "./../../../../database/scripts";
+import Modal from "../../../common/modal/Modal";
 
-const useStyles = makeStyles({
-  conteiner: {
-    background: "#c0c0c050",
-    borderRadius: "2vmin",
-    padding: "3vmin",
-  },
-  chip: {
-    margin: "1vmin",
-  },
-  code: {
-    margin: "3vmin 0",
-    overflowX: "auto",
-  },
-});
-
-function GetScript({ data: { selectedManager, selectedPackages } }) {
-  const classes = useStyles();
-
+const scriptWasCopiedText = 'This script was copied to clipboard by click'
+const GetScript = ({ data: { selectedManager, selectedPackages } }) => {
   const isNeedCurl = useMemo(
     () => selectedPackages.some((item) => scripts.curl.should.includes(item)),
     [selectedPackages]
   );
+  const [modalContent, setModalContent] = useState(null);
+
+  const copyToClipboard = useCallback( event => {
+    navigator.clipboard.writeText(event.target.innerText);
+    setModalContent(scriptWasCopiedText);
+    setInterval(() => setModalContent(null), 3000);
+  }, [setModalContent]);
 
   return (
-    <div className={classes.conteiner}>
+    <div className="get-script">
       <p>
         You are selected {selectedManager} package manager. Please, before are
         run next script, will update your system.
       </p>
-      {packages.map((item, index) => (
-        <Chip
-          key={index}
-          label={packages[index].name}
-          color={
-            selectedPackages.includes(item.codeName) ? "primary" : "secondary"
-          }
-          deleteIcon={<DoneIcon />}
-          className={classes.chip}
-        />
-      ))}
-      <Card className={classes.code} variant="outlined">
-        {isNeedCurl && (
-          <Alert severity="warning">
-            <AlertTitle>Warning</AlertTitle>
-            You are selected some package, which
-            <strong> need to install curl</strong>
-          </Alert>
-        )}
-        <CardContent>
-          <Typography variant="body2" component="pre">
-            {isNeedCurl &&
-              scripts.curl[selectedManager].map((str) => (
-                <>
-                  {str}
-                  <br />
-                  <br />
-                </>
-              ))}
-            {selectedPackages.map((item) => (
-              <>
-                {scripts[item][selectedManager].map((str) => (
-                  <>
-                    {str}
-                    <br />
-                  </>
-                ))}
-                <br />
-              </>
+      <div className="get-script__badges">
+        {packages.map((item, index) => (
+          <span
+            key={index+100}
+            className={`get-script__badge-item ${selectedPackages.includes(item.codeName) && "get-script__badge-item--selected"}`}
+          >
+            {packages[index].name}
+          </span>
+        ))}
+      </div>
+      {isNeedCurl && (
+        <p className="get-script__warning-message">
+          <strong>Warning</strong>&nbsp;
+          You are selected some package, which
+          &nbsp;<strong>need to install curl</strong>
+        </p>
+      )}
+      <span
+        className="get-script__code"
+        onClick={copyToClipboard}
+      >
+        {isNeedCurl &&
+          scripts.curl[selectedManager].map((str, indexStr) => (
+            <React.Fragment key={indexStr+200}>
+              {`${str}`}
+              <br/>
+            </React.Fragment>
+          ))}
+        {selectedPackages.map((item, indexItem) => (
+          <React.Fragment key={indexItem+300}>
+            {scripts[item][selectedManager].map((str, indexString) => (
+              <React.Fragment key={indexString+400}>
+                <br/>
+                {`${str}`}
+              </React.Fragment>
             ))}
-          </Typography>
-        </CardContent>
-      </Card>
+            <br/>
+          </React.Fragment>
+        ))}
+      </span>
+      <Modal content={modalContent}/>
     </div>
   );
 }
+
+GetScript.propTypes = {
+  data: PropTypes.shape({
+    selectedManager: PropTypes.string,
+    selectedPackages: PropTypes.array
+  }),
+};
 
 export default GetScript;

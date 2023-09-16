@@ -1,95 +1,50 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Switch from "@material-ui/core/Switch";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import React, {useCallback} from "react";
+import PropTypes from 'prop-types';
+import './InstallPackages.css';
+import Checkbox from "../../../common/checkbox/Checkbox";
 
 import packages from "./../../../../database/packages.json";
 
-const useStyles = makeStyles({
-  container: {
-    background: "#c0c0c050",
-    borderRadius: "2vmin",
-    padding: "3vmin",
-  },
-  title: {
-    fontSize: "1.3rem",
-    marginTop: "3vmin",
-    marginBottom: "3vmin",
-  },
-  form: {
-    width: "100%",
-  },
-  legend: {
-    color: "white",
-    "&:focus": {
-      color: "white",
-    },
-  },
-  label: {
-    margin: 0,
-  },
-  installPackages: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
-    gridGap: 32,
-    gridAutoFlow: "dense",
-    marginBottom: "3vmin",
-  },
-  packagesWillInstallOption: {
-    marginLeft: "3vmin",
-    marginRight: "3vmin",
-  },
-});
-
-function InstallPackages({
-  data: { selectedManager, selectedPackages, setSelectedPackages },
-}) {
-  const classes = useStyles();
-
-  const handleInstallPackagesChange = (event) => {
-    if (selectedPackages.includes(event.target.value)) {
+const InstallPackages = ({ data: { selectedPackages, setSelectedPackages } }) => {
+  const handleInstallPackagesChange = useCallback(codeName => {
+    if (selectedPackages.includes(codeName)) {
       let tempArr = selectedPackages;
-      tempArr.splice(selectedPackages.indexOf(event.target.value), 1);
+      tempArr.splice(selectedPackages.indexOf(codeName), 1);
       setSelectedPackages([...tempArr]);
     } else {
-      setSelectedPackages([...selectedPackages, event.target.value]);
+      setSelectedPackages([...selectedPackages, codeName]);
     }
-  };
+  }, [selectedPackages, setSelectedPackages]);
 
   return (
-    <article className={classes.container}>
-      <Typography variant="h5" gutterBottom className={classes.title}>
+    <article className="install-packages">
+      <h5 className="install-packages__title">
         Which package manager to use?
-      </Typography>
-      <FormGroup
-        aria-label="installPackages"
-        name="installPackages"
-        value={selectedManager}
-        onChange={handleInstallPackagesChange}
-        className={classes.installPackages}
-      >
+      </h5>
+      <div className="install-packages__form">
         <>
           {packages.map(({ id, codeName, name, status }) => (
-            <FormControlLabel
-              className={classes.label}
-              key={id}
-              value={codeName}
-              label={name}
+            <Checkbox
+              className="install-packages__label"
+              key={id+codeName}
+              checked={selectedPackages.includes(codeName)}
               disabled={!status}
-              control={
-                <Switch
-                  color="primary"
-                  checked={selectedPackages.includes(codeName)}
-                />
-              }
+              label={name}
+              value={codeName}
+              onChange={() => handleInstallPackagesChange(codeName)}
             />
           ))}
         </>
-      </FormGroup>
+      </div>
     </article>
   );
 }
+
+InstallPackages.propTypes = {
+  data: PropTypes.shape({
+    selectedPackages: PropTypes.array,
+    setSelectedPackages: PropTypes.func
+  }),
+};
 
 export default InstallPackages;

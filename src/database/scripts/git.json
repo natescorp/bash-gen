@@ -4,7 +4,10 @@
     "sudo apt-get update",
     "sudo apt install -y git"
   ],
+  "yum": [
+    "sudo yum install git"
+  ],
   "snap": [
-    ""
+    "sudo snap install git-ubuntu --classic"
   ]
 }

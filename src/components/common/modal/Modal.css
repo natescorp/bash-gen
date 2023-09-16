@@ -1,0 +1,13 @@
+.Modal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  color: var(--main-yellow-color);
+  background-color: var(--main-red-color);
+  border: .25rem double var(--main-yellow-color);
+  height: 20vmin;
+  width: 40vmin;
+}
