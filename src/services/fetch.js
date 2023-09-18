@@ -1,5 +1,5 @@
 
-const myId = '5cc87cc6e0587ff7b13dc8b471592d65';
+const myId = '_';
 const getOpenWeatherUrl = ({ cityName = 'London', appid = myId, lang = 'en' }) =>
     `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${appid}&lang=${lang}&units=metric`
 const getWeather = async (cityName) => {
