@@ -4,6 +4,8 @@ import './BashGenerator.css';
 import PackageManager from "./steps/packageManager/PackageManager";
 import InstallPackages from "./steps/installPackages/InstallPackages";
 import GetScript from "./steps/getScript/GetScript";
+import Steps from "../common/steps/Steps";
+import StepsControl from "../common/steps/StepsControl";
 
 const bashGenParam = "bashGen";
 
@@ -12,6 +14,33 @@ const BashGenerator = () => {
   const [step, setStep] = useState(0);
   const [selectedManager, setSelectedManager] = useState("apt");
   const [selectedPackages, setSelectedPackages] = useState([]);
+
+  const steps = useMemo(() => [
+    <PackageManager
+      key='package-manager'
+      data={{ selectedManager, setSelectedManager }}
+    />,
+    <InstallPackages
+      key='install-packages'
+      data={{ selectedPackages, setSelectedPackages }}
+    />,
+    <GetScript
+      key='get-script'
+      data={{ selectedManager, selectedPackages }}
+    />,
+  ], [selectedManager, selectedPackages, setSelectedManager, setSelectedPackages]);
+  const currentStep = useMemo(() => step + 1, [step]);
+  const totalSteps = useMemo(() => steps.length, [steps]);
+
+  const prevStepHandler = useCallback(event => {
+    event.preventDefault();
+    setStep(step === 0 ? 0 : step - 1);
+  }, [step, setStep]);
+
+  const nextStepHandler = useCallback(event => {
+    event.preventDefault();
+    setStep(step === 2 ? 2 : step + 1);
+  }, [step, setStep]);
 
   useEffect(() => {
     if (document.location.hostname === 'localhost') {
@@ -39,59 +68,21 @@ const BashGenerator = () => {
     );
   }, [step, selectedManager, selectedPackages]);
 
-  const steps = useMemo(() => [
-    <PackageManager key='package-manager' data={{ selectedManager, setSelectedManager }} />,
-    <InstallPackages
-      key='install-packages'
-      data={{ selectedPackages, setSelectedPackages }}
-    />,
-    <GetScript key='get-script' data={{ selectedManager, selectedPackages }} />,
-  ], [selectedManager, selectedPackages, setSelectedManager, setSelectedPackages]);
-
-  const isFirstStep = useMemo(() => step === 0, [step]);
-  const isLastStep = useMemo(() => step === steps.length - 1, [
-    step,
-    steps.length,
-  ]);
-
-  const prevStepHandler = useCallback(event => {
-    event.preventDefault();
-    setStep(step === 0 ? 0 : step - 1);
-  }, [step, setStep]);
-
-  const nextStepHandler = useCallback(event => {
-    event.preventDefault();
-    setStep(step === 2 ? 2 : step + 1);
-  }, [step, setStep]);
-
   return (
     <section className="bash-generator">
-      <h2 className="bash-generator__title">
-        Step {step + 1} of {steps.length}
-      </h2>
-      <div className="bash-generator__content">{steps[step]}</div>
-      <div className="bash-generator__footer">
-        {!isFirstStep && (
-          <button
-            className="bash-generator__footer-button"
-            type="button"
-            value="prev"
-            onClick={prevStepHandler}
-          >
-            Prev
-          </button>
-        )}
-        {!isLastStep && (
-          <button
-            className="bash-generator__footer-button"
-            type="button"
-            value="next"
-            onClick={nextStepHandler}
-          >
-            Next
-          </button>
-        )}
+      <Steps
+        currentStep={currentStep}
+        totalSteps={totalSteps}
+      />
+      <div className="bash-generator__content">
+        {steps[step]}
       </div>
+      <StepsControl
+        currentStep={currentStep}
+        nextStepHandler={nextStepHandler}
+        totalSteps={totalSteps}
+        prevStepHandler={prevStepHandler}
+      />
       {isVisiblePalette && <div className="bash-generator__palette">
         <div className="bash-generator__palette--black">black</div>
         <div className="bash-generator__palette--blue">blue</div>

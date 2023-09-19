@@ -1,0 +1,22 @@
+.steps-control {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.steps-control__button {
+  flex: 1 1 417px;
+  background-color: var(--main-cyan-color);
+  color: var(--main-white-color);
+  border: 0;
+  font-family: "Web437_IBM_VGA";
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+.steps-control__button:hover {
+  background-color: var(--main-light-cyan-color);
+  color: var(--main-black-color);
+}

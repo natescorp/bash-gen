@@ -8,38 +8,9 @@
   height: 100%;
 }
 
-.bash-generator__title {
-  font-size: 2rem;
-  font-weight: normal;
-  line-height: 1.2;
-}
-
 .bash-generator__content {
   background-color: var(--main-dark-gray-color);
   padding: 3vmin;
-}
-
-.bash-generator__footer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-  grid-gap: 2rem;
-  grid-auto-flow: dense;
-  margin: 1rem 0;
-}
-
-.bash-generator__footer-button {
-  background-color: var(--main-cyan-color);
-  color: var(--main-white-color);
-  border: 0;
-  font-family: "Web437_IBM_VGA";
-  font-size: 2rem;
-  font-weight: normal;
-  line-height: 1.5;
-}
-
-.bash-generator__footer-button:hover {
-  background-color: var(--main-light-cyan-color);
-  color: var(--main-black-color);
 }
 
 .bash-generator__palette {
