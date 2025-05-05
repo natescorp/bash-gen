@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/bash-gen/static/css/main.727ea064.css",
+    "main.js": "/bash-gen/static/js/main.43f4863e.js",
+    "static/css/71.b79bf80b.chunk.css": "/bash-gen/static/css/71.b79bf80b.chunk.css",
+    "static/js/71.90adc3c2.chunk.js": "/bash-gen/static/js/71.90adc3c2.chunk.js",
+    "static/css/372.0c6ec9d4.chunk.css": "/bash-gen/static/css/372.0c6ec9d4.chunk.css",
+    "static/js/372.378520a5.chunk.js": "/bash-gen/static/js/372.378520a5.chunk.js",
+    "static/js/453.c69df9c8.chunk.js": "/bash-gen/static/js/453.c69df9c8.chunk.js",
+    "static/media/WebPlus_IBM_VGA_9x16.woff": "/bash-gen/static/media/WebPlus_IBM_VGA_9x16.34633851ff87c8ed9ca5.woff",
+    "index.html": "/bash-gen/index.html",
+    "main.727ea064.css.map": "/bash-gen/static/css/main.727ea064.css.map",
+    "main.43f4863e.js.map": "/bash-gen/static/js/main.43f4863e.js.map",
+    "71.b79bf80b.chunk.css.map": "/bash-gen/static/css/71.b79bf80b.chunk.css.map",
+    "71.90adc3c2.chunk.js.map": "/bash-gen/static/js/71.90adc3c2.chunk.js.map",
+    "372.0c6ec9d4.chunk.css.map": "/bash-gen/static/css/372.0c6ec9d4.chunk.css.map",
+    "372.378520a5.chunk.js.map": "/bash-gen/static/js/372.378520a5.chunk.js.map",
+    "453.c69df9c8.chunk.js.map": "/bash-gen/static/js/453.c69df9c8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.727ea064.css",
+    "static/js/main.43f4863e.js"
+  ]
+}
