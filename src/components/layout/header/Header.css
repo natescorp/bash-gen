@@ -24,10 +24,25 @@
   text-decoration: none;
 }
 
-.header__title {
+.header__title,
+.header__link {
   text-decoration: none;
 }
 
-.header__link {
-  text-decoration: none;
+.header__title::before,
+.header__link::before {
+  content: '[';
+  visibility: hidden;
+}
+.header__title::after,
+.header__link::after {
+  content: ']';
+  visibility: hidden;
+}
+
+.header__title:hover::before,
+.header__link:hover::before,
+.header__title:hover::after,
+.header__link:hover::after {
+  visibility: inherit;
 }

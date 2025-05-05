@@ -1,8 +1,8 @@
 import React, { lazy, Suspense, useEffect, useRef  } from 'react';
 
 import './App.css';
-const Layout = lazy(() => import('./components/layout/Layout'));
-const BashGenerator = React.lazy(() => import('./components/bashGenerator/BashGenerator'));
+const Layout = lazy(() => import('./components/layout/layout'));
+const BashGenerator = React.lazy(() => import('./components/bashGenerator/bashGenerator'));
 // import BiosTemplate from "./components/BiosTemplate";
 
 const App = () => {

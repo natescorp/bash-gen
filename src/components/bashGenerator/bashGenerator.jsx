@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useMemo, useCallback} from "react";
 import './BashGenerator.css';
 
-import PackageManager from "./steps/packageManager/PackageManager";
-import InstallPackages from "./steps/installPackages/InstallPackages";
-import GetScript from "./steps/getScript/GetScript";
+import PackageManager from "./steps/packageManager/packageManager";
+import InstallPackages from "./steps/installPackages/installPackages";
+import GetScript from "./steps/getScript/getScript";
 import Steps from "../common/steps/Steps";
 import StepsControl from "../common/steps/StepsControl";
 
