@@ -1,7 +1,15 @@
+/* App.css */
 .App {
   background-color: var(--main-black-color);
   max-width: 100dvw;
   min-height: 100dvh;
   margin: 0;
   padding: 0;
+  position: relative;
+}
+
+/* Стили для загрузки */
+.loading-screen {
+  padding: var(--space-xl);
+  text-align: center;
 }

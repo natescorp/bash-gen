@@ -1,3 +1,4 @@
+/* index.css */
 html {
   --main-black-color: #000000;
   --main-blue-color: #0000AA;
@@ -16,16 +17,83 @@ html {
   --main-yellow-color: #FFFF55;
   --main-white-color: #FFFFFF;
 
+  /* Добавим переменные для отступов */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
   font-family: 'Web437_IBM_VGA';
   color: var(--main-white-color);
   background-color: var(--main-black-color);
   font-size: calc( (100vmax - 480px)/(1280 - 480) * (24 - 16) + 16px);
+
+  /* Для пиксельности */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Эффекты старого монитора */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  animation: scan 8s linear infinite;
+}
+
+/* Курсор в углу */
+body::after {
+  content: "_";
+  position: fixed;
+  bottom: var(--space-sm);
+  right: var(--space-sm);
+  color: var(--main-light-cyan-color);
+  font-size: 24px;
+  animation: blink 1s step-end infinite;
+  opacity: 0.5;
+  z-index: 10000;
+}
+
+/* Анимации */
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes flicker {
+  0% { opacity: 0.99; }
+  50% { opacity: 1; }
+  100% { opacity: 0.99; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+body {
+  animation: flicker 0.15s infinite;
 }
 
 code {
@@ -39,6 +107,34 @@ code::before {
 
 code::after {
   content: " |"
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--main-black-color);
+  border: 2px solid var(--main-light-gray-color);
+  border-style: inset;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-dark-gray-color);
+  border: 2px solid var(--main-light-gray-color);
+  border-style: outset;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main-light-gray-color);
+}
+
+/* Выделение */
+::selection {
+  background-color: var(--main-yellow-color);
+  color: var(--main-black-color);
 }
 
 @font-face {

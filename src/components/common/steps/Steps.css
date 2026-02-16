@@ -1,5 +1,90 @@
-.steps {
-  font-size: 2rem;
-  font-weight: normal;
-  line-height: 1.2;
+/* Steps.css */
+.steps-container {
+  background-color: var(--main-black-color);
+  border: 3px solid var(--main-light-gray-color);
+  border-style: inset;
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.steps-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-lg);
+  text-transform: uppercase;
+}
+
+.steps-label {
+  color: var(--main-yellow-color);
+}
+
+.steps-label::before {
+  content: "▶";
+  margin-right: var(--space-sm);
+  color: var(--main-light-green-color);
+  font-size: var(--font-size-sm);
+}
+
+.steps-counter {
+  color: var(--main-light-cyan-color);
+  background-color: var(--main-dark-gray-color);
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--main-light-gray-color);
+  border-style: inset;
+}
+
+.steps-progress-bar {
+  height: 24px;
+  background-color: var(--main-black-color);
+  border: 2px solid var(--main-light-gray-color);
+  border-style: inset;
+  position: relative;
+  overflow: hidden;
+}
+
+.steps-progress-fill {
+  height: 100%;
+  background-color: var(--main-light-blue-color);
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.steps-progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: progressPulse 1.5s ease infinite;
+}
+
+@keyframes progressPulse {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .steps-header {
+    font-size: var(--font-size-md);
+  }
+
+  .steps-progress-bar {
+    height: 20px;
+  }
+}
+
+@media (orientation: portrait) {
+  .steps-container {
+    margin-bottom: 3vmax;
+  }
 }

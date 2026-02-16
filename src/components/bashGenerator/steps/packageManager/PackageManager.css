@@ -1,16 +1,43 @@
+/* PackageManager.css */
 .package-manager {
   display: flex;
   flex-direction: column;
+  background-color: var(--main-black-color);
+  border: 2px solid var(--main-light-gray-color);
+  border-style: inset;
+  padding: var(--space-lg);
+}
+
+.package-manager__header {
+  display: flex;
   align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--main-light-gray-color);
+}
+
+.package-manager__prompt {
+  color: var(--main-light-green-color);
+  font-size: var(--font-size-lg);
+  animation: blink 1s step-end infinite;
 }
 
 .package-manager__title {
-  font-size: 1.3rem;
+  font-size: var(--font-size-lg);
   font-weight: normal;
   line-height: 1.2;
-  text-align: center;
-  margin-top: 3vmin;
-  margin-bottom: 3vmin;
+  color: var(--main-yellow-color);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.package-manager__form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
 }
 
 .package-manager__label {
@@ -18,24 +45,97 @@
   line-height: 2;
   text-align: center;
   vertical-align: middle;
+  background-color: var(--main-dark-gray-color);
+  border: 2px solid var(--main-light-gray-color);
+  border-style: outset;
+  padding: var(--space-sm);
+  color: var(--main-white-color);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  font-size: var(--font-size-md);
 }
 
 .package-manager__label:hover {
   background-color: var(--main-yellow-color);
   color: var(--main-black-color);
+  border-color: var(--main-white-color);
 }
 
-.package-manager__form {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  grid-gap: 1.5rem;
-  grid-auto-flow: dense;
+.package-manager__label:active {
+  border-style: inset;
+  transform: translateY(2px);
+}
+
+/* Стиль для выбранного менеджера */
+.package-manager__label input[type="checkbox"]:checked + * {
+  background-color: var(--main-light-blue-color);
+  color: var(--main-white-color);
+  border-color: var(--main-light-cyan-color);
+}
+
+.package-manager__footer {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-sm);
+  border-top: 1px dashed var(--main-light-gray-color);
+  text-align: center;
+}
+
+.package-manager__hint {
+  color: var(--main-light-cyan-color);
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+}
+
+.package-manager__hint::before,
+.package-manager__hint::after {
+  content: "♦";
+  margin: 0 var(--space-sm);
+  color: var(--main-yellow-color);
+  font-size: var(--font-size-xs);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .package-manager {
+    padding: var(--space-md);
+  }
+
+  .package-manager__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .package-manager__title {
+    font-size: var(--font-size-md);
+  }
+
+  .package-manager__form {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .package-manager__prompt {
+    font-size: var(--font-size-md);
+  }
+
+  .package-manager__hint {
+    font-size: var(--font-size-xs);
+  }
+
+  .package-manager__hint::before,
+  .package-manager__hint::after {
+    display: none;
+  }
 }
 
 @media (orientation: portrait) {
   .package-manager__title {
-    margin-top: 3vmax;
-    margin-bottom: 3vmax;
+    margin-top: 1vmax;
+    margin-bottom: 1vmax;
+  }
+
+  .package-manager__header {
+    margin-bottom: 2vmax;
   }
 }

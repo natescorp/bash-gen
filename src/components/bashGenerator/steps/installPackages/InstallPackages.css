@@ -1,25 +1,105 @@
+/* InstallPackages.css */
 .install-packages {
   display: flex;
   flex-direction: column;
+  background-color: var(--main-black-color);
+  border: 2px solid var(--main-light-gray-color);
+  border-style: inset;
+  padding: var(--space-lg);
+  font-family: "Web437_IBM_VGA", monospace;
+}
+
+.install-packages__header {
+  display: flex;
   align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--main-light-gray-color);
+}
+
+.install-packages__prompt {
+  color: var(--main-light-green-color);
+  font-size: var(--font-size-lg);
+  animation: blink 1s step-end infinite;
 }
 
 .install-packages__title {
-  font-size: 1.3rem;
+  font-size: var(--font-size-lg);
   font-weight: normal;
   line-height: 1.2;
-  text-align: center;
-  margin-top: 3vmin;
-  margin-bottom: 3vmin;
+  color: var(--main-yellow-color);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.install-packages__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-sm);
+  background-color: var(--main-dark-gray-color);
+  border: 2px solid var(--main-light-gray-color);
+  border-style: inset;
+}
+
+.install-packages__counter {
+  color: var(--main-light-cyan-color);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+}
+
+.install-packages__counter::before {
+  content: "📦";
+  margin-right: var(--space-xs);
+  color: var(--main-yellow-color);
+}
+
+.install-packages__hint {
+  color: var(--main-light-green-color);
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+}
+
+.install-packages__hint::before,
+.install-packages__hint::after {
+  content: "♦";
+  margin: 0 var(--space-xs);
+  color: var(--main-yellow-color);
+  font-size: 8px;
 }
 
 .install-packages__form {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  grid-gap: 2rem;
-  grid-auto-flow: dense;
-  margin-bottom: 3vmin;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  max-height: 400px;
+  overflow-y: auto;
+  padding: var(--space-xs);
+  background-color: var(--main-dark-gray-color);
+  border: 2px solid var(--main-light-gray-color);
+  border-style: inset;
+}
+
+/* Стилизация скроллбара для формы */
+.install-packages__form::-webkit-scrollbar {
+  width: 8px;
+}
+
+.install-packages__form::-webkit-scrollbar-track {
+  background: var(--main-black-color);
+  border: 1px solid var(--main-light-gray-color);
+  border-style: inset;
+}
+
+.install-packages__form::-webkit-scrollbar-thumb {
+  background: var(--main-dark-gray-color);
+  border: 1px solid var(--main-light-gray-color);
+  border-style: outset;
 }
 
 .install-packages__label {
@@ -27,20 +107,112 @@
   line-height: 2;
   text-align: center;
   vertical-align: middle;
+  background-color: var(--main-dark-gray-color);
+  border: 2px solid var(--main-light-gray-color);
+  border-style: outset;
+  padding: var(--space-sm);
+  color: var(--main-white-color);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  font-size: var(--font-size-sm);
+  user-select: none;
 }
 
 .install-packages__label:hover {
   background-color: var(--main-yellow-color);
   color: var(--main-black-color);
+  border-color: var(--main-white-color);
 }
 
+.install-packages__label:active {
+  border-style: inset;
+  transform: translateY(2px);
+}
+
+/* Стиль для выбранного пакета */
+.install-packages__label input[type="checkbox"]:checked + * {
+  background-color: var(--main-light-blue-color);
+  color: var(--main-white-color);
+  border-color: var(--main-light-cyan-color);
+}
+
+/* Стиль для disabled пакетов */
+.install-packages__label input[type="checkbox"]:disabled + * {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--main-dark-gray-color);
+  color: var(--main-dark-gray-color);
+  border-color: var(--main-dark-gray-color);
+}
+
+.install-packages__footer {
+  margin-top: var(--space-lg);
+  padding: var(--space-sm);
+  background-color: var(--main-dark-gray-color);
+  border: 2px solid var(--main-light-gray-color);
+  border-style: inset;
+  text-align: center;
+}
+
+.install-packages__footer-text {
+  color: var(--main-light-cyan-color);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+}
+
+.install-packages__footer-text::before {
+  content: ">";
+  margin-right: var(--space-sm);
+  color: var(--main-light-green-color);
+  animation: blink 1s step-end infinite;
+}
+
+/* Анимации */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Адаптивность */
 @media (orientation: portrait) {
+  .install-packages {
+    padding: var(--space-md);
+  }
+
+  .install-packages__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
   .install-packages__title {
-    margin-top: 3vmax;
-    margin-bottom: 3vmax;
+    font-size: var(--font-size-md);
+  }
+
+  .install-packages__info {
+    flex-direction: column;
+    gap: var(--space-xs);
+    text-align: center;
   }
 
   .install-packages__form {
-    margin-bottom: 3vmax;
+    grid-template-columns: 1fr;
+    max-height: 300px;
+  }
+
+  .install-packages__hint::before,
+  .install-packages__hint::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .install-packages__prompt {
+    font-size: var(--font-size-md);
+  }
+
+  .install-packages__label {
+    font-size: var(--font-size-xs);
+    padding: var(--space-xs);
   }
 }

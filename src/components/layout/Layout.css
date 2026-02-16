@@ -1,12 +1,30 @@
+/* Layout.css */
 .layout {
-  background-color: var(--main-dark-gray-color);
+  background-color: var(--main-black-color);
   display: flex;
   flex-direction: column;
-  padding: 3vmin;
+  padding: var(--space-lg);
+  min-height: calc(100dvh - 80px);
+  border: 2px solid var(--main-light-gray-color);
+  border-style: inset;
+  margin: var(--space-md);
+  position: relative;
+}
+
+/* BIOS-промпт в углу layout */
+.layout::before {
+  content: ">";
+  position: absolute;
+  top: var(--space-xs);
+  left: var(--space-xs);
+  color: var(--main-light-green-color);
+  font-size: var(--space-md);
+  animation: blink 1s step-end infinite;
 }
 
 @media (orientation: portrait) {
   .layout {
-    padding: 3vmax;
+    padding: var(--space-md);
+    margin: var(--space-sm);
   }
 }

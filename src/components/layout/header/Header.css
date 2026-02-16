@@ -1,13 +1,16 @@
+/* Header.css */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-grow: 1;
-  padding: .75rem 1rem;
-  background-color: var(--main-blue-color);
-  border-bottom: .25rem solid var(--main-cyan-color);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--main-dark-gray-color);
+  border-bottom: 3px solid var(--main-light-gray-color);
+  border-style: outset;
+  position: relative;
 }
 
+/* Все ссылки в хедере */
 .header__menu-button,
 .header__title,
 .header__link {
@@ -16,33 +19,84 @@
   font-weight: normal;
   line-height: 1.2;
   text-decoration: none;
-  margin: 0 .75rem;
+  padding: var(--space-xs) var(--space-sm);
+  border: 2px solid transparent;
+  transition: all 0.1s ease;
+  font-family: inherit;
 }
 
+/* Специфичные стили */
 .header__menu-button {
   flex-grow: 1;
-  text-decoration: none;
+  text-align: left;
 }
 
-.header__title,
-.header__link {
-  text-decoration: none;
+/* Эффект при наведении */
+.header__menu-button:hover,
+.header__title:hover,
+.header__link:hover {
+  color: var(--main-black-color);
+  background-color: var(--main-yellow-color);
+  border-color: var(--main-white-color);
+  border-style: outset;
 }
 
+/* Скобки при наведении */
 .header__title::before,
 .header__link::before {
-  content: '[';
-  visibility: hidden;
+  content: "[";
+  margin-right: var(--space-xs);
+  opacity: 0;
+  transition: opacity 0.1s ease;
 }
+
 .header__title::after,
 .header__link::after {
-  content: ']';
-  visibility: hidden;
+  content: "]";
+  margin-left: var(--space-xs);
+  opacity: 0;
+  transition: opacity 0.1s ease;
 }
 
 .header__title:hover::before,
 .header__link:hover::before,
 .header__title:hover::after,
 .header__link:hover::after {
-  visibility: inherit;
+  opacity: 1;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+  }
+
+  .header__menu-button,
+  .header__title,
+  .header__link {
+    font-size: 1.2rem;
+    padding: var(--space-xs);
+  }
+
+  .header__menu-button {
+    flex-grow: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header__menu-button,
+  .header__title,
+  .header__link {
+    text-align: center;
+    justify-content: center;
+  }
 }

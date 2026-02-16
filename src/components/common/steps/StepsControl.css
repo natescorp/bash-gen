@@ -1,22 +1,74 @@
+/* StepsControl.css */
 .steps-control {
   display: flex;
-  flex-wrap: wrap-reverse;
-  gap: 2rem;
-  margin: 1rem 0;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+  justify-content: center;
 }
 
 .steps-control__button {
-  flex: 1 1 417px;
-  background-color: var(--main-cyan-color);
-  color: var(--main-white-color);
-  border: 0;
+  flex: 1 1 300px;
+  background-color: var(--main-dark-gray-color);
+  color: var(--main-yellow-color);
+  border: 3px solid var(--main-light-gray-color);
+  border-style: outset;
   font-family: "Web437_IBM_VGA";
-  font-size: 2rem;
+  font-size: var(--font-size-lg);
   font-weight: normal;
   line-height: 1.5;
+  padding: var(--space-md) var(--space-lg);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.1s ease;
+  position: relative;
 }
 
 .steps-control__button:hover {
-  background-color: var(--main-light-cyan-color);
+  background-color: var(--main-light-gray-color);
   color: var(--main-black-color);
+  border-color: var(--main-white-color);
+}
+
+.steps-control__button:active {
+  border-style: inset;
+  background-color: var(--main-blue-color);
+  color: var(--main-white-color);
+  transform: translateY(2px);
+}
+
+.steps-control__button.prev::before {
+  content: "<";
+  margin-right: var(--space-sm);
+  color: var(--main-light-green-color);
+  opacity: 0.7;
+}
+
+.steps-control__button.next::after {
+  content: ">";
+  margin-left: var(--space-sm);
+  color: var(--main-light-green-color);
+  opacity: 0.7;
+}
+
+.steps-control__button:hover::before,
+.steps-control__button:hover::after {
+  opacity: 1;
+  color: var(--main-black-color);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .steps-control__button {
+    font-size: var(--font-size-md);
+    padding: var(--space-sm) var(--space-md);
+    flex: 1 1 100%;
+  }
+}
+
+@media (orientation: portrait) {
+  .steps-control {
+    margin: 3vmax 0;
+  }
 }
