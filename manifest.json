@@ -1,0 +1,34 @@
+{
+    "background_color": "#00aaaa",
+    "description": "Bash-script Generator",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "./icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "./icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "./icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "name": "Bash Generator",
+	  "orientation": "portrait",
+    "scope": ".",
+    "serviceworker": "use_cache",
+    "short_name": "bash-gen",
+    "start_url": "./bash-gen",
+    "theme_color": "#00aaaa"
+}
